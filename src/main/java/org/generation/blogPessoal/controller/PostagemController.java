@@ -35,10 +35,10 @@ public class PostagemController {
 		return repository.findById(id).map(resp -> ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build());
 	}
 	
-	@GetMapping("/titulo/{titulo}")
-	public ResponseEntity<List<PostagemModel>> GetByTitulo(@PathVariable String titulo){
-	return ResponseEntity.ok(repository.findAllByTituloContainingIgnoreCase(titulo));	
-	}
+//	@GetMapping("/titulo/{titulo}")
+//	public ResponseEntity<List<PostagemModel>> GetByTitulo(@PathVariable String titulo){
+//	return ResponseEntity.ok(repository.findAllByTituloContainingIgnoreCase(titulo));	
+//	}
 	
 	@PostMapping
 	public ResponseEntity<PostagemModel> post (@RequestBody PostagemModel postagem){
@@ -54,4 +54,25 @@ public class PostagemController {
 	public void delete(@PathVariable long id) {
 		repository.deleteById(id);
 	}
+
+
+@GetMapping(value="/maior")
+public ResponseEntity<List<PostagemModel>> findAllMaior(){
+	return ResponseEntity.ok(repository.findAllMaior());
 }
+
+@GetMapping(value="/ordem")
+public ResponseEntity<List<PostagemModel>> anosDesc(){
+	return ResponseEntity.ok(repository.anosDesc());
+}
+
+@GetMapping(value="/asc")
+public ResponseEntity<List<PostagemModel>> anosAsc(){
+	return ResponseEntity.ok(repository.anosAsc());
+}
+
+@GetMapping(value="/intervalo")
+public ResponseEntity<List<PostagemModel>> anosIntervalos(){
+	return ResponseEntity.ok(repository.anosIntervalos());
+}
+	}

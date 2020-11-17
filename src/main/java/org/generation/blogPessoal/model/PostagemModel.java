@@ -25,6 +25,9 @@ public class PostagemModel {
 	@NotNull //não aceitar tabela vazia
 	@Size(min=5,max=100) // tamanho do texto
 	private String titulo;
+
+	@NotNull
+	private int ano;
 	
 	@NotNull //não aceitar tabela vazia
 	@Size(min=10,max=500) // tamanho do texto
